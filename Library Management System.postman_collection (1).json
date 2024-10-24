@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "41faad90-b2c1-431c-8f40-a41813977ff4",
+		"name": "Library Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29814421"
+	},
+	"item": [
+		{
+			"name": "Auth api",
+			"item": [
+				{
+					"name": "Register new User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.url.protocol=\"http\";\r",
+									"pm.request.url.host=\"localhost\";\r",
+									"pm.request.url.port=\"8085\";"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"abdohalim\",\r\n    \"password\":\"1234567\",\r\n    \"phoneNumber\":\"022466\",\r\n    \"role\":\"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/public/register",
+							"path": [
+								"public",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"abdohalim_13\",\r\n    \"password\":\"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/public/login",
+							"path": [
+								"public",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "add author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NDY2NjIsImV4cCI6MTcyOTc1MDI2Mn0.CrmjAxZsrTQ5u4glFaOyG__yVFCVyaDjbby4N2l-zuQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ahmed ali\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/admin/author",
+							"path": [
+								"admin",
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Author By id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NDY2NjIsImV4cCI6MTcyOTc1MDI2Mn0.CrmjAxZsrTQ5u4glFaOyG__yVFCVyaDjbby4N2l-zuQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/admin/author/8",
+							"path": [
+								"admin",
+								"author",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Authors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NDY2NjIsImV4cCI6MTcyOTc1MDI2Mn0.CrmjAxZsrTQ5u4glFaOyG__yVFCVyaDjbby4N2l-zuQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/admin/author",
+							"path": [
+								"admin",
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NDY2NjIsImV4cCI6MTcyOTc1MDI2Mn0.CrmjAxZsrTQ5u4glFaOyG__yVFCVyaDjbby4N2l-zuQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"aref\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/admin/author/8",
+							"path": [
+								"admin",
+								"author",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Author By Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Add Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NTQ5OTksImV4cCI6MTcyOTc1ODU5OX0.7DyXPaymSF1-zHn7yIy2-CrPb77L2C8IUFYqVEm0Qug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\":\"442\",\r\n \"publishedDate\":\"2024-10-01\",\r\n \"authorId\":5,\r\n \"category\":\"football\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/admin/book",
+							"path": [
+								"admin",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Book By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NTQ5OTksImV4cCI6MTcyOTc1ODU5OX0.7DyXPaymSF1-zHn7yIy2-CrPb77L2C8IUFYqVEm0Qug",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/admin/book/4",
+							"path": [
+								"admin",
+								"book",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Books",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NTc1NTksImV4cCI6MTcyOTc2MTE1OX0.nYh3ycD7PUdCidovsBiUOUJPk6lZlakoItKjE3gv-cQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"352\",\r\n        \"publishedDate\": \"2024-10-01\",\r\n        \"authorId\": 9,\r\n        \"category\": \"Sports\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/admin/book/6",
+							"path": [
+								"admin",
+								"book",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Categories",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NTA0NDksImV4cCI6MTcyOTc1NDA0OX0.kgQ1H_Q9Z3efYSpphv7LGfiTNYsuXUZHCzQ_Ag_hnck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"play\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/admin/category/5",
+							"path": [
+								"admin",
+								"category",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve category By id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTMiLCJpYXQiOjE3Mjk3NTA0NDksImV4cCI6MTcyOTc1NDA0OX0.kgQ1H_Q9Z3efYSpphv7LGfiTNYsuXUZHCzQ_Ag_hnck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/admin/category/5",
+							"path": [
+								"admin",
+								"category",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User APIs",
+			"item": [
+				{
+					"name": "Retrieve All Books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTQiLCJpYXQiOjE3Mjk3NTc4MDcsImV4cCI6MTcyOTc2MTQwN30.uCuuc8F0_GOi7dVXEgpqrN9EpsYd4erHwm0uzWW60D0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/user/Books",
+							"path": [
+								"user",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Book By id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Search for book or books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmRvaGFsaW1fMTQiLCJpYXQiOjE3Mjk3NTkzOTcsImV4cCI6MTcyOTc2Mjk5N30.PaVc9Cqiu5ZwhGn926rx000hF3jL_efw_6U2-flnlEo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/user/search",
+							"path": [
+								"user",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.url.protocol=\"http\";\r",
+					"pm.request.url.host=\"localhost\";\r",
+					"pm.request.url.port=\"8085\";"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.request.url.protocol=\"http\";\r",
+					"pm.request.url.host=\"localhost\";\r",
+					"pm.request.url.port=\"8085\";"
+				]
+			}
+		}
+	]
+}
