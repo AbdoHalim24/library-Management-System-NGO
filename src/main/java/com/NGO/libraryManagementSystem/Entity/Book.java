@@ -20,9 +20,12 @@ public class Book {
     private String name;
     private LocalDate publishedDate;
     @ManyToOne()
+    @JoinColumn(nullable = true)
     private Author author;
     @ManyToOne()
+    @JoinColumn(nullable = true)
     private Category category;
+
 
     @Version
     private Integer version;

@@ -54,7 +54,7 @@ public class Config implements  WebMvcConfigurer{
         http.cors(cors -> cors.disable());
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
-            auth.requestMatchers("/user/**").hasAuthority("USER");
+            auth.requestMatchers("/user/**").hasAnyAuthority("USER","ADMIN");
             auth.anyRequest().permitAll();
         });
         http.sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
