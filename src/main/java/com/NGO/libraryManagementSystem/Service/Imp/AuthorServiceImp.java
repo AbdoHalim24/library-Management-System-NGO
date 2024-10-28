@@ -3,10 +3,13 @@ package com.NGO.libraryManagementSystem.Service.Imp;
 import com.NGO.libraryManagementSystem.DTO.AuthorDto;
 import com.NGO.libraryManagementSystem.DTO.SavedAuthorDto;
 import com.NGO.libraryManagementSystem.Entity.Author;
+import com.NGO.libraryManagementSystem.Entity.Book;
 import com.NGO.libraryManagementSystem.Mapper.AuthorMap;
 import com.NGO.libraryManagementSystem.Repository.AuthorRepository;
+import com.NGO.libraryManagementSystem.Repository.BookRepository;
 import com.NGO.libraryManagementSystem.Service.AuthorService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,10 +19,12 @@ import java.util.stream.Collectors;
 public class AuthorServiceImp implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorMap authorMapper;
+    private final BookRepository bookRepository;
 
-    public AuthorServiceImp(AuthorRepository authorRepository, AuthorMap authorMap) {
+    public AuthorServiceImp(AuthorRepository authorRepository, AuthorMap authorMap, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
         this.authorMapper = authorMap;
+        this.bookRepository = bookRepository;
     }
 
     @Override
@@ -58,7 +63,14 @@ public class AuthorServiceImp implements AuthorService {
     }
 
     @Override
+    @Transactional
     public void deleteAuthor(Integer id) {
+        Author author=authorRepository.findById(id).get();
+        List<Book> books=author.getBooks();
+        for (Book book : books){
+            book.setAuthor(null);
+        }
+        bookRepository.saveAll(books);
         authorRepository.deleteById(id);
     }
 

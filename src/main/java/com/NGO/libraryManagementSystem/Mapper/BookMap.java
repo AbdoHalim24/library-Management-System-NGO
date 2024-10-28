@@ -44,10 +44,20 @@ public class BookMap {
     public SavedBookDto BookToSavedBookDto(Book book){
         SavedBookDto savedBookDto=new SavedBookDto();
         savedBookDto.setId(book.getId());
-        savedBookDto.setAuthor(book.getAuthor().getName());
-        savedBookDto.setCategory(book.getCategory().getName());
         savedBookDto.setName(book.getName());
         savedBookDto.setPublishedDate(book.getPublishedDate());
+        if (book.getAuthor()==null){
+            savedBookDto.setAuthor(null);
+        }
+        else{
+            savedBookDto.setAuthor(book.getAuthor().getName());
+        }
+        if (book.getCategory()==null){
+            savedBookDto.setCategory(null);
+        }
+        else {
+            savedBookDto.setCategory(book.getCategory().getName());
+        }
         return savedBookDto;
     }
 }

@@ -44,8 +44,6 @@ public class CategoryController {
             return ResponseEntity.created(location).body(category);
         }
         return ResponseEntity.badRequest().body("this category is exist");
-
-
     }
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCategory(@PathVariable Integer id,@Validated @RequestBody CategoryDto categoryDto){

@@ -25,6 +25,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
     @OneToMany(mappedBy = "category")
     private List<Book> bookList=new ArrayList<>();
     @Version
