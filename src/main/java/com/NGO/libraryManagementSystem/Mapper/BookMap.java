@@ -29,6 +29,8 @@ public class BookMap {
         Category category=categoryService.findCategoryObjectByName(bookDto.getCategory());
         book.setCategory(category);
         book.setAuthor(author);
+
+
         book.setPublishedDate(bookDto.getPublishedDate());
         book.setName(bookDto.getName());
         return book;

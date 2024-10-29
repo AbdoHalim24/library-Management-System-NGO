@@ -68,9 +68,37 @@ public class BookServiceImp implements BookService {
         bookRepository.deleteById(id);
     }
 
+//    @Override
+//    public List<SavedBookDto> retrieveSearchBooks(SearchDto searchDto) {
+//        if (searchDto.getAuthor()!=null){
+//            if (searchDto.getAuthor().isBlank() ){
+//                searchDto.setAuthor(null);
+//            }
+//        }
+//        if (searchDto.getCategory()!=null){
+//            if (searchDto.getCategory().isBlank()){
+//                searchDto.setCategory(null);
+//            }
+//        }
+//        Integer authorId,categoryId;
+//        if (searchDto.getAuthor()==null){
+//            authorId=null;
+//        }
+//        else {
+//            authorId=authorService.RetrieveAuthorByName(searchDto.getAuthor()).getId();
+//        }
+//        if (searchDto.getCategory()==null){
+//            categoryId=null;
+//        }
+//        else {
+//            categoryId=categoryService.findCategoryByName(searchDto.getCategory()).getId();
+//        }
+//
+//        List<Book> bookList=bookRepository.retrieveSearchBooks(authorId,categoryId);
+//        return bookList.stream().map(bookMapper::BookToSavedBookDto).collect(Collectors.toList());
+//    }
     @Override
     public List<SavedBookDto> retrieveSearchBooks(SearchDto searchDto) {
-
         if (searchDto.getAuthor()!=null){
             if (searchDto.getAuthor().isBlank() ){
                 searchDto.setAuthor(null);
@@ -81,30 +109,13 @@ public class BookServiceImp implements BookService {
                 searchDto.setCategory(null);
             }
         }
-
-
-        Integer authorId,categoryId;
-
-        if (searchDto.getAuthor()==null){
-            authorId=null;
-        }
-        else {
-            authorId=authorService.RetrieveAuthorByName(searchDto.getAuthor()).getId();
-        }
-        if (searchDto.getCategory()==null){
-            categoryId=null;
-        }
-        else {
-            categoryId=categoryService.findCategoryByName(searchDto.getCategory()).getId();
-        }
-
-
-        List<Book> bookList=bookRepository.retrieveSearchBooks(authorId,categoryId);
-
+        List<Book> bookList=bookRepository.BooksSearch(searchDto.getAuthor(), searchDto.getCategory());
         return bookList.stream().map(bookMapper::BookToSavedBookDto).collect(Collectors.toList());
+
     }
 
-    @Override
+
+        @Override
     public List<SavedBookDto> retrieveAuthorBooks(Integer id) {
         List<Book> bookList=bookRepository.findByAuthorId(id);
         return bookList.stream().map(bookMapper::BookToSavedBookDto).collect(Collectors.toList());
